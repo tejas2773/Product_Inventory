@@ -14,7 +14,7 @@ export const deleteFromSupabase = async (imageUrl) => {
   if (!fileName) return;
 
   const { data, error } = await supabase.storage
-    .from("videos")
+    .from("products")
     .remove([fileName]);
 
   console.log("SUPABASE DELETE DATA:", data);
