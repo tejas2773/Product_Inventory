@@ -7,8 +7,12 @@ function ProfileIcon() {
   const [open, setOpen] = useState(false);
   const dispatch=useDispatch();
   const navigate=useNavigate();
+
+
   const reduxIntialstate=useSelector((state)=>state.auth);
   console.log(reduxIntialstate);
+
+  const localdata=JSON.parse(localStorage.getItem('Registration'));
   
   const handleToggle = () => {
     setOpen(!open);
@@ -16,9 +20,10 @@ function ProfileIcon() {
 
   const Leave=()=>{
     dispatch(logout(null));
-    navigate("http://localhost:5173/register")
+    localStorage.clear();
+    navigate("http://localhost:5173/")
   }
-
+  
   return (
     <div className="relative">
       <button
@@ -33,8 +38,8 @@ function ProfileIcon() {
           <p className="text-xs text-gray-500 mb-1">Signed in as</p>
 
           
-          <p className="text-sm font-semibold text-gray-800">{reduxIntialstate?.user?.name}</p>
-          <p className="text-xs text-gray-600 mb-4">{reduxIntialstate?.user?.email}</p>
+          <p className="text-sm font-semibold text-gray-800">{reduxIntialstate?.user?.name || localdata?.name}</p>
+          <p className="text-xs text-gray-600 mb-4">{reduxIntialstate?.user?.email || localdata?.email}</p>
 
           <div className="h-px bg-gray-200 mb-3" />
 

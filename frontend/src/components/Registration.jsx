@@ -20,6 +20,7 @@ function Registration() {
     e.preventDefault();
     console.log(form);
     dispatch(login(form));
+    localStorage.setItem("Registration",JSON.stringify(form));
     setForm({email:"",password:"",name:""})
     navigate("http://localhost:5173/dashboard");
   };

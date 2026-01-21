@@ -45,8 +45,10 @@ function AddProduct() {
     if (id) {
       const res = await axios.put(`http://localhost:5000/api/products/${id}`,formdata);
       console.log(res);
+      alert("product updated successfully")
     } else {
       await axios.post("http://localhost:5000/api/products", formdata);
+      alert("product created successfully");
     }
 
     setImage(null);
